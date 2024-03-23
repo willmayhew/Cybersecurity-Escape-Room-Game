@@ -3,7 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UI
+  - Logic
+  - Dialogue
+  - DoorKey3
+  - Inventory
+  - DoorKey1
+  - DoorKey5
+  - DoorKey6
+  - AltarKey1
+  - DoorKey2
+  - DoorKey4
+  - UIInventory
+  - PlayerHit
+  - Boss
+  - EnemyAI
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -11,6 +27,13 @@ TagManager:
   - 
   - Water
   - UI
+  - Obstacle
+  - EnemyProjectile
+  - Enemy
+  - Player
+  - Walls
+  - Objects
+  - WallsPlus
   - 
   - 
   - 
@@ -18,16 +41,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Layer 1
+  - Layer 2
+  - Layer 3
   - 
   - 
   - 
@@ -40,4 +56,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Layer 1
+    uniqueID: 2425651459
+    locked: 0
+  - name: Layer 2
+    uniqueID: 4250941897
+    locked: 0
+  - name: Layer 3
+    uniqueID: 4189426099
     locked: 0

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>mickford, Tony Richards (trichards57), Dan Wheeler, DropBox</dc:creator>
+  <dc:description>C#/.NET port of Dan Wheeler/DropBox's Zxcvbn JS password strength estimation library.  Updated for .Net Core.</dc:description>
+  <dc:identifier>zxcvbn-core</dc:identifier>
+  <version>7.0.92</version>
+  <keywords>password strength validation zxcvbn</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=5.8.0.6930, Culture=neutral, PublicKeyToken=31bf3856ad364e35;Microsoft Windows NT 10.0.17763.0;.NET Framework 4.7.2</lastModifiedBy>
+</coreProperties>
