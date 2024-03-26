@@ -78,7 +78,11 @@ public class PasswordCanvasWorkshopScript : CanvasScript
     private void Completed()
     {
         DisplayPasswordStats(statsFinalText);
+
+        statsFinalText.text = "Your final password inputted was: " + userInput + "\n \n" + statsFinalText.text;
+
         gamePlayObject.SetActive(false);
+        statsObject.SetActive(false);
         finalObject.SetActive(true);
     }
 
@@ -121,7 +125,7 @@ public class PasswordCanvasWorkshopScript : CanvasScript
 
         foreach (Rule rule in rules)
         {
-            if (!CheckRuleCompliance(rule))
+            if (!CheckRuleCompliance(rule, userInput))
             {
                 Debug.Log("Password does not comply with the rule: " + rule.description);
                 return;
@@ -161,30 +165,30 @@ public class PasswordCanvasWorkshopScript : CanvasScript
         }
     }
 
-    private bool CheckRuleCompliance(Rule rule)
+    public bool CheckRuleCompliance(Rule rule, string password)
     {
         switch (rule.description.Split(":")[0].Trim())
         {
             case "Length":
-                return userInput.Length >= 8;
+                return password.Length >= 8;
 
             case "Uppercase":
-                return userInput.Any(char.IsUpper);
+                return password.Any(char.IsUpper);
 
             case "Lowercase":
-                return userInput.Any(char.IsLower);
+                return password.Any(char.IsLower);
 
             case "Number":
-                return userInput.Any(char.IsDigit);
+                return password.Any(char.IsDigit);
 
             case "Special Character":
-                return userInput.Any(c => !char.IsLetterOrDigit(c));
+                return password.Any(c => !char.IsLetterOrDigit(c));
 
             case "Common Password":
-                return !IsCommonPassword(userInput);
+                return !IsCommonPassword(password);
 
             case "Password Score":
-                return IsComplexEnough(userInput, 4);
+                return IsComplexEnough(password, 4);
 
             default:
                 return true;

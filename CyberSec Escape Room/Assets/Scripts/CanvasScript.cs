@@ -7,7 +7,7 @@ public class CanvasScript : MonoBehaviour
     public ChallengeObject challengeObject;
     public PlayerMovement playerMovement;
     protected DialogueTrigger trigger;
-    protected LogicManager logic;
+    public LogicManager logic;
 
     protected virtual void Start()
     {

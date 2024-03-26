@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCScript : ChallengeObject
 {
-    private DialogueManager dialogueManager;
+    public DialogueManager dialogueManager;
 
     protected override void Start()
     {

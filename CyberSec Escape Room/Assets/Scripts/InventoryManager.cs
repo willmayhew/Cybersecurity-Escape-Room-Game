@@ -5,7 +5,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    private List<GameObject> inventoryObjects = new List<GameObject>();
+    public List<GameObject> inventoryObjects = new List<GameObject>();
     private UIScript uiElements;
 
     private void Awake()

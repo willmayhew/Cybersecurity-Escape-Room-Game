@@ -15,8 +15,8 @@ public class PhishingCanvasScript : CanvasScript
     public GameObject rejectButton;
 
     public Letter[] letters;
-    protected int currentLetterIndex = 0;
-    protected bool incorrect = false;
+    public int currentLetterIndex = 0;
+    public bool incorrect = false;
 
     protected override void Start()
     {

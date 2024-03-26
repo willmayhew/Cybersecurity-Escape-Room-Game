@@ -153,7 +153,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public List<KeyValuePair<string, object>> GetVariableStates()
+    public virtual List<KeyValuePair<string, object>> GetVariableStates()
     {
         List<KeyValuePair<string, object>> variableStates = new List<KeyValuePair<string, object>>();
 

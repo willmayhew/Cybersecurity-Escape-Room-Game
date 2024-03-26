@@ -102,7 +102,7 @@ public class Boss : InteractableObject
         AttackFinished?.Invoke();
     }
 
-    public bool TakeDamage()
+    public virtual bool TakeDamage()
     {
         StartCoroutine(StartAnimationWithDelay("Hurt"));
 

@@ -7,9 +7,9 @@ using UnityEngine;
 public class AttackitemScript : MonoBehaviour
 {
     private AttackItemSpawner spawner; // Reference to the AttackItemSpawner
-    private LogicManager logic;
+    public LogicManager logic;
     private PlayerMovement player;
-    private Boss boss;
+    public Boss boss;
     private EnemyAI enemyAI;
 
     public float amplitude = 2;

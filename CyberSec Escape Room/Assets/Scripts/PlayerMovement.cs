@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Zxcvbn.Matcher.Matches;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private LogicManager logic;
 
-    private void Awake() {
-
+    private void Start() 
+    {
         logic = LogicManager.Instance;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        Debug.Log(logic);
         Vector2 doorPosition = doorPositions[logic.getDoorIndex()];
         rb.position = new Vector2(doorPosition.x, doorPosition.y + 0.7f);
 
@@ -36,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnMovement(InputValue value){
-
+    public void OnMovement(InputValue value)
+    {
         if (!canMove) return;
 
         movement = value.Get<Vector2>();
@@ -53,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsWalking", false);
         }
-
     }
 
     private void FixedUpdate()

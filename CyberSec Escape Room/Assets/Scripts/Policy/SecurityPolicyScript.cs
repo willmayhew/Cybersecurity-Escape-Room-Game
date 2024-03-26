@@ -13,7 +13,7 @@ public class SecurityPolicyScript : MonoBehaviour
     private bool stopTimer = false;
     public Slider countdownBar;
 
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
     public Button policy1Button;
     public Button policy2Button;
@@ -23,7 +23,7 @@ public class SecurityPolicyScript : MonoBehaviour
     private TextMeshProUGUI policy2;
     private TextMeshProUGUI policy3;
 
-    private int selectedButton = -1;
+    public int selectedButton = -1;
 
     private LogicManager logic;
 

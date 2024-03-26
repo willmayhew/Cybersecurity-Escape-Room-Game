@@ -8,16 +8,21 @@ public class LogicManager : MonoBehaviour
 {
     public static LogicManager Instance;
 
-    private int lives = 5;
+    public GameObject playerUI;
+
+    public int maxLives = 5;
+    private int lives;
     private bool playerImmune = false;
     public GameObject heartPrefab;
     public GameObject greyHeartPrefab;
     public Transform heartsParent;
 
+    public GameObject deathObject;
+
     //public GameObject redOverlayObject;
     public GameObject redOverlay;
     private Image redOverlayImage;
-    public float fadeDuration = 1f;
+    public float redFadeDuration = 1f;
 
     private List<GameObject> heartObjects = new List<GameObject>();
 
@@ -41,16 +46,25 @@ public class LogicManager : MonoBehaviour
 
     void Start()
     {
+        lives = maxLives;
         InitializeHearts();
+
+        deathObject.SetActive(false);
+
         redOverlay.SetActive(false);
         redOverlayImage = redOverlay.GetComponent<Image>();
+    }
+
+    public int GetLives()
+    {
+        return lives;
     }
 
     public void ToggleImmunity(bool state)
     {
         playerImmune = state;
     }
-    public void decrementLife()
+    public virtual void decrementLife()
     {
 
         if (!playerImmune)
@@ -61,22 +75,23 @@ public class LogicManager : MonoBehaviour
             if (lives <= 0)
             {
                 Debug.Log("Gameover");
+                deathObject.SetActive(true);
+                redOverlay.SetActive(false);
+                Time.timeScale = 0;
             } else
             {
                 redOverlay.SetActive(true);
                 StartCoroutine(DamageTaken());
             }
         }
-
-
     }
 
     private IEnumerator DamageTaken()
     {
         float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
+        while (elapsedTime < redFadeDuration)
         {
-            float t = elapsedTime / fadeDuration;
+            float t = elapsedTime / redFadeDuration;
             Color currentColor = Color.Lerp(Color.red, Color.clear, t);
             redOverlayImage.color = currentColor;
             elapsedTime += Time.deltaTime;
@@ -187,6 +202,8 @@ public class LogicManager : MonoBehaviour
     }
     public void GameComplete()
     {
+        playerUI.SetActive(false);
+        lives = maxLives;
         StartCoroutine(SwitchSceneWithDelay());
     }
 

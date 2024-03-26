@@ -27,9 +27,9 @@ public class PasswordCanvasIdentifierScript : CanvasScript
     [TextArea(3, 10)]
     public string instructionsText;
 
-    private int currentStage = 0;
+    public int currentStage = 0;
     public PasswordStage[] stagePasswords;
-    private int selectedButton = -1;
+    public int selectedButton = -1;
 
     //Password (Strength: 1)
     //Passw0rd1 (Strength: 1)

@@ -5,8 +5,8 @@ public class InteractableObject : MonoBehaviour
     protected DialogueTrigger trigger;
     protected bool isPlayerInRange = false;
     public GameObject canvas;
-    protected LogicManager logic;
-    protected InventoryManager inventory;
+    public LogicManager logic;
+    public InventoryManager inventory;
     protected PlayerMovement player;
 
     protected virtual void Start()
