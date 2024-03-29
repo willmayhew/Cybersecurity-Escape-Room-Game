@@ -1,3 +1,5 @@
+using Ink.Parsed;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +9,16 @@ using UnityEngine.UI;
 public class LogicManager : MonoBehaviour
 {
     public static LogicManager Instance;
+    public PlayerMovement player;
 
     public GameObject playerUI;
 
     public int maxLives = 5;
-    private int lives;
+    public int lives;
     private bool playerImmune = false;
     public GameObject heartPrefab;
     public GameObject greyHeartPrefab;
+    public GameObject additionalHeartPrefab;
     public Transform heartsParent;
 
     public GameObject deathObject;
@@ -28,6 +32,10 @@ public class LogicManager : MonoBehaviour
 
     private List<string> openedDoors = new List<string>();
     private List<string> completedChallenges = new List<string>();
+
+    private bool isBossFightStarted;
+
+    private int scarewareIndex = 0;
 
     private int doorPrevious = 0; //The index of the door the player came from in the previous scene
     private int currentDoor = 0; //The index of the door the player just walked through in the current scene
@@ -46,6 +54,8 @@ public class LogicManager : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
         lives = maxLives;
         InitializeHearts();
 
@@ -103,20 +113,57 @@ public class LogicManager : MonoBehaviour
 
     }
 
-// Updates the canvas objects of the hearts on the UI
     private void UpdateHearts()
     {
-        for (int i = 0; i < heartObjects.Count; i++)
+
+        Debug.Log("Current lives: " + lives);
+
+        // Clear all existing hearts
+        foreach (var heartObject in heartObjects)
         {
-            if (i >= lives)
+            Destroy(heartObject);
+        }
+        heartObjects.Clear();
+
+        // Determine the number of red hearts to display
+        int redHeartsCount = Mathf.Min(lives, maxLives);
+
+        // Add red hearts
+        for (int i = 0; i < redHeartsCount; i++)
+        {
+            GameObject heart = Instantiate(heartPrefab, heartsParent);
+            RectTransform rt = heart.GetComponent<RectTransform>();
+            rt.localPosition = new Vector3(-180 + i * rt.rect.width, 0, 0f);
+            heartObjects.Add(heart);
+        }
+
+        if(lives > maxLives)
+        {
+            int additionalHeartsCount = lives - maxLives;
+            for (int i = 0; i < additionalHeartsCount; i++)
             {
-                Vector3 heartPosition = heartObjects[i].transform.position;
-                Destroy(heartObjects[i]);
-                GameObject greyHeart = Instantiate(greyHeartPrefab, heartPosition, Quaternion.identity, heartsParent);
-                heartObjects[i] = greyHeart;
+                GameObject additionalHeart = Instantiate(additionalHeartPrefab, heartsParent);
+                RectTransform rt = additionalHeart.GetComponent<RectTransform>();
+                rt.localPosition = new Vector3(-180 + (redHeartsCount + i) * rt.rect.width, 0, 0f);
+                heartObjects.Add(additionalHeart);
+            }
+        }
+
+        if(lives < maxLives)
+        {
+            int greyHeartsCount = maxLives - lives;
+            for (int i = 0; i < greyHeartsCount; i++)
+            {
+                Debug.Log(greyHeartPrefab);
+                Debug.Log(heartsParent);
+                GameObject greyHeart = Instantiate(greyHeartPrefab, heartsParent);
+                RectTransform rt = greyHeart.GetComponent<RectTransform>();
+                rt.localPosition = new Vector3(-180 + (redHeartsCount + i) * rt.rect.width, 0, 0f);
+                heartObjects.Add(greyHeart);
             }
         }
     }
+
 
     public void InitializeHearts()
     {
@@ -132,37 +179,16 @@ public class LogicManager : MonoBehaviour
         }
     }
 
-    //public void AltarCompletion(string altarID)
-    //{
-    //    if (altarID.Equals("altar1"))
-    //    {
-    //        altar1State = true;
-    //    }
-    //    else if (altarID.Equals("altar2"))
-    //    {
-    //        altar2State = true;
-    //    }
-    //}
+    public virtual void AddLife()
+    {
+        if (lives < 10)
+        {
+            lives++;
+            UpdateHearts();
+            Debug.Log("Life added");
+        }
 
-    //public bool IsAltarsComplete()
-    //{
-    //    return altar1State && altar2State;
-    //}
-
-    //public bool getAltarState(string altarID)
-    //{
-    //    if (altarID.Equals("altar1"))
-    //    {
-    //        return altar1State;
-    //    }
-    //    else if (altarID.Equals("altar2"))
-    //    {
-    //        return altar2State;
-    //    }
-
-    //    return false;
-
-    //}
+    }
 
     public void AddOpenDoor(string doorName)
     {
@@ -213,6 +239,26 @@ public class LogicManager : MonoBehaviour
 
         // Load the target scene
         SceneManager.LoadScene("FinalScene");
+    }
+
+    public void BossFightStarted(bool started)
+    {
+        isBossFightStarted = started;
+    }
+
+    public bool IsBossFightStarted()
+    {
+        return isBossFightStarted;
+    }
+
+    public int GetScarewareIndex()
+    {
+        return scarewareIndex;
+    }
+
+    public void IncrementScarewareIndex()
+    {
+        scarewareIndex++;
     }
 
 }

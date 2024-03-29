@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4079977163090090350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2441297604499803928}
+  - component: {fileID: 6054091336720628665}
+  m_Layer: 0
+  m_Name: ScarewareManager
+  m_TagString: Scareware
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2441297604499803928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079977163090090350}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 903.1582, y: 461.826, z: 3.953085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6054091336720628665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079977163090090350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6830875aa898d4bb6faad4167febc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  gameCanvas: {fileID: 0}
+  scarewarePopup:
+  - {fileID: 9198808651547133243, guid: f17ffa4cc4361704c906ddc7636c5347, type: 3}
+  - {fileID: 9198808651547133243, guid: 8028c40dd795e464bafc296ebe968610, type: 3}
+  - {fileID: 9198808651547133243, guid: bb8479c9118813c46a924da22a2c6904, type: 3}
+  - {fileID: 9198808651547133243, guid: 0a4fbb1a95c928d49912526a8ef706e5, type: 3}
+  - {fileID: 9198808651547133243, guid: d55679c28ada07341bee2798ad967886, type: 3}
+  minPosition: {x: 546, y: 385}
+  maxPosition: {x: 1465, y: 605}

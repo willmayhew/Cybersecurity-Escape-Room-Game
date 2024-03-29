@@ -3317,6 +3317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919984138101020475, guid: aa44a2d6196eabc49a8101c878a7c82b,
         type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 4061786600296822805}
+    - target: {fileID: 7919984138101020475, guid: aa44a2d6196eabc49a8101c878a7c82b,
+        type: 3}
       propertyPath: redOverlay
       value: 
       objectReference: {fileID: 4061786600296822804}
@@ -3335,6 +3340,12 @@ PrefabInstance:
       propertyPath: redOverlayObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7919984138101020475, guid: aa44a2d6196eabc49a8101c878a7c82b,
+        type: 3}
+      propertyPath: additionalHeartPrefab
+      value: 
+      objectReference: {fileID: 5499661456541494833, guid: a02f100cea431dc42b751bdc3464a620,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5538,6 +5549,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899826614}
   m_CullTransparentMesh: 1
+--- !u!1001 &931326958
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 903.1582
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 461.826
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.953085
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2441297604499803928, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079977163090090350, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: m_Name
+      value: ScarewareManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054091336720628665, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1678559983}
+    - target: {fileID: 6054091336720628665, guid: 79216cb2d57c9214b949616cad4211e5,
+        type: 3}
+      propertyPath: gameCanvas
+      value: 
+      objectReference: {fileID: 1253361636}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79216cb2d57c9214b949616cad4211e5, type: 3}
 --- !u!1 &953325728
 GameObject:
   m_ObjectHideFlags: 0
@@ -7070,6 +7159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   challengeObject: {fileID: 1388248223}
   playerMovement: {fileID: 1678559983}
+  logic: {fileID: 0}
   introductionObject: {fileID: 113091382}
   gamePlayObject: {fileID: 1746983763}
   instructions: {fileID: 692768984}
@@ -7087,6 +7177,7 @@ MonoBehaviour:
     In
     this challenge, your task is to identify which of the three provided passwords
     demonstrates the highest level of strength and security."'
+  currentStage: 0
   stagePasswords:
   - strongest: 1
     passwords:
@@ -7113,6 +7204,7 @@ MonoBehaviour:
     - TrUstN0_0n3
     - $3cUr!tY_P@55WD
     - P@$$w0rD_Cr4cK3r
+  selectedButton: -1
 --- !u!1001 &1678559982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8531,6 +8623,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4061786600296822803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4061786600296822805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2505311245002427045, guid: c345fec2d2696d644bcc7902948ede03,
+    type: 3}
+  m_PrefabInstance: {fileID: 4061786600296822803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8540,6 +8638,7 @@ SceneRoots:
   - {fileID: 756491736}
   - {fileID: 2003365873}
   - {fileID: 1318994700}
+  - {fileID: 931326958}
   - {fileID: 1253361633}
   - {fileID: 1177979890}
   - {fileID: 1678559982}

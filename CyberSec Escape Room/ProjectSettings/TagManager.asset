@@ -20,6 +20,7 @@ TagManager:
   - Boss
   - EnemyAI
   - Projectile
+  - Scareware
   layers:
   - Default
   - TransparentFX

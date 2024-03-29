@@ -42,6 +42,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!IsAIStarted)
         {
+            logic.BossFightStarted(true);
             IsAIStarted = true;
             InvokeRepeating("UpdatePath", 0f, 1f);
         }
@@ -166,6 +167,7 @@ public class EnemyAI : MonoBehaviour
     public void HideObject()
     {
         gameObject.SetActive(false);
+        //logic.BossFightStarted(false);
         logic.GameComplete();
     }
 
