@@ -13,7 +13,8 @@ public class LogicManager : MonoBehaviour
 
     public GameObject playerUI;
 
-    public int maxLives = 5;
+    public int maxLives = 10;
+    public int maxNormalLives = 5;
     public int lives;
     private bool playerImmune = false;
     public GameObject heartPrefab;
@@ -32,6 +33,7 @@ public class LogicManager : MonoBehaviour
 
     private List<string> openedDoors = new List<string>();
     private List<string> completedChallenges = new List<string>();
+    private Dictionary<string,ChallengeStats> challengeStats = new Dictionary<string, ChallengeStats>();
 
     private bool isBossFightStarted;
 
@@ -56,7 +58,7 @@ public class LogicManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
-        lives = maxLives;
+        lives = maxNormalLives;
         InitializeHearts();
 
         deathObject.SetActive(false);
@@ -126,7 +128,7 @@ public class LogicManager : MonoBehaviour
         heartObjects.Clear();
 
         // Determine the number of red hearts to display
-        int redHeartsCount = Mathf.Min(lives, maxLives);
+        int redHeartsCount = Mathf.Min(lives, maxNormalLives);
 
         // Add red hearts
         for (int i = 0; i < redHeartsCount; i++)
@@ -137,21 +139,21 @@ public class LogicManager : MonoBehaviour
             heartObjects.Add(heart);
         }
 
-        if(lives > maxLives)
+        if(lives > maxNormalLives)
         {
-            int additionalHeartsCount = lives - maxLives;
+            int additionalHeartsCount = lives - maxNormalLives;
             for (int i = 0; i < additionalHeartsCount; i++)
             {
                 GameObject additionalHeart = Instantiate(additionalHeartPrefab, heartsParent);
                 RectTransform rt = additionalHeart.GetComponent<RectTransform>();
-                rt.localPosition = new Vector3(-180 + (redHeartsCount + i) * rt.rect.width, 0, 0f);
+                rt.localPosition = new Vector3(-180 + (i) * rt.rect.width, 0, 0f);
                 heartObjects.Add(additionalHeart);
             }
         }
 
-        if(lives < maxLives)
+        if(lives < maxNormalLives)
         {
-            int greyHeartsCount = maxLives - lives;
+            int greyHeartsCount = maxNormalLives - lives;
             for (int i = 0; i < greyHeartsCount; i++)
             {
                 Debug.Log(greyHeartPrefab);
@@ -181,7 +183,7 @@ public class LogicManager : MonoBehaviour
 
     public virtual void AddLife()
     {
-        if (lives < 10)
+        if (lives < maxLives)
         {
             lives++;
             UpdateHearts();
@@ -226,20 +228,87 @@ public class LogicManager : MonoBehaviour
     {
         return completedChallenges.Contains(challengeName);
     }
-    public void GameComplete()
+
+    public void StoreChallengeStatistics(string challengeName, bool correct, int index)
     {
-        playerUI.SetActive(false);
-        lives = maxLives;
-        StartCoroutine(SwitchSceneWithDelay());
+        if (!challengeStats.TryGetValue(challengeName, out ChallengeStats stats))
+        {
+            // If the challenge name doesn't exist in the dictionary, create a new entry
+            stats = new ChallengeStats();
+            challengeStats.Add(challengeName, stats);
+        }
+
+        // Add the index to the appropriate list based on whether the answer was correct
+        if (correct)
+        {
+            stats.correctAnswerIndices.Add(index);
+        }
+        else
+        {
+            stats.incorrectAnswerIndices.Add(index);
+        }
     }
 
-    IEnumerator SwitchSceneWithDelay()
+    public void GameComplete()
     {
+        //foreach(string challenge in completedChallenges)
+        //{
+        //    Debug.Log(challenge);
+        //}
+        //Debug.Log("-----------------");
+        //foreach (string challenge in challengeStats.Keys)
+        //{
+        //    Debug.Log("-----------------");
+        //    Debug.Log(challenge);
+        //    foreach (int index in challengeStats[challenge].correctAnswerIndices)
+        //    {
+        //        Debug.Log("Correct " + index);
+        //    }
+        //    foreach (int index in challengeStats[challenge].incorrectAnswerIndices)
+        //    {
+        //        Debug.Log("Incorrect " + index);
+        //    }
+        //}
+        //Debug.Log("-----------------");
+
+
+        //playerUI.SetActive(false);
+        StartCoroutine(FinalSceneWithDelay());
+    }
+
+    IEnumerator FinalSceneWithDelay()
+    {
+        // Wait for 2 seconds before starting the fade
         yield return new WaitForSeconds(2.0f);
+
+        foreach (Transform child in playerUI.transform)
+        {
+            child.gameObject.SetActive(false);
+            Debug.Log(child);
+        }
+
+        // Utilise redOverlay to show death fade (Set to black)
+        redOverlay.SetActive(true);
+
+        float elapsedTime = 0f;
+        while (elapsedTime < 2.0f)
+        {
+            float t = elapsedTime / redFadeDuration;
+            Color currentColor = Color.Lerp(Color.clear, Color.black, t);
+            redOverlayImage.color = currentColor;
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        redOverlayImage.color = Color.black;
+
+        redOverlay.SetActive(false);
 
         // Load the target scene
         SceneManager.LoadScene("FinalScene");
     }
+
 
     public void BossFightStarted(bool started)
     {
@@ -259,6 +328,11 @@ public class LogicManager : MonoBehaviour
     public void IncrementScarewareIndex()
     {
         scarewareIndex++;
+    }
+
+    public Dictionary<string, ChallengeStats> GetChallengeStats()
+    {
+        return challengeStats;
     }
 
 }

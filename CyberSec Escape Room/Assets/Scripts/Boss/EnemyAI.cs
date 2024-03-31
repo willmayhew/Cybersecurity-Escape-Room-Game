@@ -42,7 +42,6 @@ public class EnemyAI : MonoBehaviour
     {
         if (!IsAIStarted)
         {
-            logic.BossFightStarted(true);
             IsAIStarted = true;
             InvokeRepeating("UpdatePath", 0f, 1f);
         }
@@ -162,6 +161,10 @@ public class EnemyAI : MonoBehaviour
             CancelInvoke("UpdatePath");
             rb.velocity = Vector2.zero;
         }
+
+        Debug.Log(enableMovement);
+        Debug.Log(IsAIStarted);
+
     }
 
     public void HideObject()

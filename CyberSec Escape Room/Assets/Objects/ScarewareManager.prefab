@@ -53,5 +53,5 @@ MonoBehaviour:
   - {fileID: 9198808651547133243, guid: bb8479c9118813c46a924da22a2c6904, type: 3}
   - {fileID: 9198808651547133243, guid: 0a4fbb1a95c928d49912526a8ef706e5, type: 3}
   - {fileID: 9198808651547133243, guid: d55679c28ada07341bee2798ad967886, type: 3}
-  minPosition: {x: 546, y: 385}
-  maxPosition: {x: 1465, y: 605}
+  minPosition: {x: 267, y: 194}
+  maxPosition: {x: 725, y: 276}

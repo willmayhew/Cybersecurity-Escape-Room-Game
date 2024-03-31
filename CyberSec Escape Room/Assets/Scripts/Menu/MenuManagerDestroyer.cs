@@ -1,36 +1,30 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MenuManagerDestroyer : MonoBehaviour
 {
     private void Start()
     {
-        // Find all objects with the tag "Logic" and destroy them
-        GameObject[] logicManagers = GameObject.FindGameObjectsWithTag("Logic");
-        foreach (GameObject manager in logicManagers)
-        {
-            Destroy(manager);
-        }
+        // Destroy all managers
+        DestroyManagersWithTag("Logic");
+        DestroyManagersWithTag("Inventory");
+        DestroyManagersWithTag("Dialogue");
+        DestroyManagersWithTag("UI");
+    }
 
-        // Find all objects with the tag "Manager" and destroy them
-        GameObject[] managers = GameObject.FindGameObjectsWithTag("Inventory");
+    private void DestroyManagersWithTag(string tag)
+    {
+        Debug.Log(tag);
+        GameObject[] managers = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject manager in managers)
         {
+
+            Debug.Log(manager);
+
+            // If the GameObject is inactive, activate it before destroying
+            manager.SetActive(true);
+
+            // Now destroy the GameObject
             Destroy(manager);
         }
-
-        // Find all objects with the tag "Dialogue" and destroy them
-        GameObject[] dialogueManagers = GameObject.FindGameObjectsWithTag("Dialogue");
-        foreach (GameObject manager in dialogueManagers)
-        {
-            Destroy(manager);
-        }
-
-        GameObject[] playerUI = GameObject.FindGameObjectsWithTag("UI");
-        foreach (GameObject manager in playerUI)
-        {
-            Destroy(manager);
-        }
-
     }
 }

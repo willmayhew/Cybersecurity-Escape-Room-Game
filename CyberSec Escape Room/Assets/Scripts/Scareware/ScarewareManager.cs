@@ -42,20 +42,21 @@ public class ScarewareManager : MonoBehaviour
 
         while (true)
         {
-
-            if(logic.IsBossFightStarted())
-            {
-                yield break;
-            }
-
             // Wait for a random amount of time
-            float randomDelay = Random.Range(1f, 2f); // Adjust the range as needed
+            float randomDelay = Random.Range(10f, 15f); // Adjust the range as needed
             yield return new WaitForSeconds(randomDelay);
 
             while (!player.CanMove())
             {
                 yield return new WaitForSeconds(2);
             }
+
+            if (logic.IsBossFightStarted())
+            {
+                yield break;
+            }
+
+            Debug.Log(logic.IsBossFightStarted());
 
             // Call the scareware function
             StartScareware();
@@ -84,6 +85,8 @@ public class ScarewareManager : MonoBehaviour
         //player.ToggleMovement(true);
         //isScarewareActive = false;
         //Destroy(scarewarePopupInstance);
+
+        logic.StoreChallengeStatistics("Scareware", success, logic.GetScarewareIndex() % scarewarePopup.Length);
 
         if (success)
         {

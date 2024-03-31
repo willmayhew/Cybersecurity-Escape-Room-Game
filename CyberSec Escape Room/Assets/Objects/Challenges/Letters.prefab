@@ -200,8 +200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reject
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e5e92fe79725e7842bdafaf361d0b152, type: 2}
-  m_sharedMaterial: {fileID: 3280146809946762359, guid: e5e92fe79725e7842bdafaf361d0b152,
+  m_fontAsset: {fileID: 11400000, guid: 43f92f78270528147b71d75c167a14c9, type: 2}
+  m_sharedMaterial: {fileID: -7094233213695134777, guid: 43f92f78270528147b71d75c167a14c9,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -335,8 +335,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e5e92fe79725e7842bdafaf361d0b152, type: 2}
-  m_sharedMaterial: {fileID: 3280146809946762359, guid: e5e92fe79725e7842bdafaf361d0b152,
+  m_fontAsset: {fileID: 11400000, guid: 43f92f78270528147b71d75c167a14c9, type: 2}
+  m_sharedMaterial: {fileID: -7094233213695134777, guid: 43f92f78270528147b71d75c167a14c9,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -361,8 +361,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -470,8 +470,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fc590c20ed79a1c4f83dc6442bf9e3ed, type: 2}
-  m_sharedMaterial: {fileID: -9221732416605469017, guid: fc590c20ed79a1c4f83dc6442bf9e3ed,
+  m_fontAsset: {fileID: 11400000, guid: 43f92f78270528147b71d75c167a14c9, type: 2}
+  m_sharedMaterial: {fileID: -7094233213695134777, guid: 43f92f78270528147b71d75c167a14c9,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -496,8 +496,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.28
-  m_fontSizeBase: 83.28
+  m_fontSize: 63
+  m_fontSizeBase: 63
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -632,6 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   challengeObject: {fileID: 0}
   playerMovement: {fileID: 0}
+  logic: {fileID: 0}
   letterTextUI: {fileID: 4519448648559390503}
   instructionsText: 
   continueButton: {fileID: 0}
@@ -667,6 +668,8 @@ MonoBehaviour:
     isLegitimate: 1
   - text: bruh moment
     isLegitimate: 0
+  currentLetterIndex: 0
+  incorrect: 0
 --- !u!1 &5645294719195850650
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,8 +870,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Accept
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e5e92fe79725e7842bdafaf361d0b152, type: 2}
-  m_sharedMaterial: {fileID: 3280146809946762359, guid: e5e92fe79725e7842bdafaf361d0b152,
+  m_fontAsset: {fileID: 11400000, guid: 43f92f78270528147b71d75c167a14c9, type: 2}
+  m_sharedMaterial: {fileID: -7094233213695134777, guid: 43f92f78270528147b71d75c167a14c9,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -893,8 +896,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

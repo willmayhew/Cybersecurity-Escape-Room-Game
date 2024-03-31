@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1269156131136296834}
   m_Layer: 5
   m_Name: Key 7 - GOLD
-  m_TagString: DoorKey6
+  m_TagString: DoorKey2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

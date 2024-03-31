@@ -6,7 +6,6 @@ using TMPro;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using System.Linq;
-using Zxcvbn;
 using System.Runtime.CompilerServices;
 using UnityEngine.EventSystems;
 
@@ -109,10 +108,12 @@ public class PasswordCanvasIdentifierScript : CanvasScript
     {
         if (stagePasswords[currentStage].strongest == selectedButton)
         {
+            logic.StoreChallengeStatistics("PasswordIdentifier", true, currentStage);
             NextStage();
         } 
         else if(selectedButton != -1)
         {
+            logic.StoreChallengeStatistics("PasswordIdentifier", false, currentStage);
             logic.decrementLife();
         }
 

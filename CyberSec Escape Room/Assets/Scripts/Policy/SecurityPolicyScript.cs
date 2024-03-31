@@ -131,6 +131,8 @@ public class SecurityPolicyScript : MonoBehaviour
 
         gameObject.SetActive(false);
 
+        logic.StoreChallengeStatistics("Policy", correct, currentIndex);
+
         if (correct)
         {
             attackitemScript.ChallengeCompleted(true);

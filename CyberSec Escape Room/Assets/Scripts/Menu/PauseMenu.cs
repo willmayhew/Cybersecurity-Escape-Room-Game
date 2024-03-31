@@ -7,11 +7,20 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseMenu;
+    private PlayerMovement player;
+
+    private void Start()
+    {
+        player = player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+    }
 
     public void Pause()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        if (player.CanMove())
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void Resume()

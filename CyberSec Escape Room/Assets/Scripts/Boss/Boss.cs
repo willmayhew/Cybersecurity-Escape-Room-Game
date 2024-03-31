@@ -32,6 +32,7 @@ public class Boss : InteractableObject
         animator = GetComponent<Animator>();
         enemyGFX = GetComponent<Transform>();
         healthBar.UpdateHealthBar(health, maxHealth);
+        //logic.GameComplete();
     }
 
     protected override void Update()
@@ -104,6 +105,7 @@ public class Boss : InteractableObject
 
     public virtual bool TakeDamage()
     {
+
         StartCoroutine(StartAnimationWithDelay("Hurt"));
 
         health -= 100;
@@ -124,6 +126,7 @@ public class Boss : InteractableObject
     {
         spawner.ToggleSpawning(false);
         enemyAI.ToggleMovement(false);
+        logic.ToggleImmunity(true);
         trigger.TriggerDialogue(false, gameObject);
     }
 

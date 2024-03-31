@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -105,6 +106,12 @@ public class PhishingCanvasScript : CanvasScript
         if (!isLetterLegitimate())
         {
             incorrect = true;
+
+            logic.StoreChallengeStatistics("Phishing", false, currentLetterIndex);
+
+        } else
+        {
+            logic.StoreChallengeStatistics("Phishing", true, currentLetterIndex);
         }
         NextLetter();
     }
@@ -114,6 +121,11 @@ public class PhishingCanvasScript : CanvasScript
         if (isLetterLegitimate())
         {
             incorrect = true;
+
+            logic.StoreChallengeStatistics("Phishing", false, currentLetterIndex);
+        } else
+        {
+            logic.StoreChallengeStatistics("Phishing", true, currentLetterIndex);
         }
         NextLetter();
     }

@@ -128,17 +128,18 @@ public class PasswordCanvasWorkshopScript : CanvasScript
             if (!CheckRuleCompliance(rule, userInput))
             {
                 Debug.Log("Password does not comply with the rule: " + rule.description);
+                logic.StoreChallengeStatistics("PasswordWorkshop", false, rules.Count);
                 return;
             }
         }
 
         Debug.Log("Password complies with all rules. Proceeding to the next stage...");
+        logic.StoreChallengeStatistics("PasswordWorkshop", true, rules.Count);
         ProceedToNextStage();
     }
 
     private void DisplayPasswordStats(TextMeshProUGUI stats)
     {
-
         var result = Zxcvbn.Core.EvaluatePassword(userInput);
 
         string statsText = $"Password Stats:\n" +
@@ -165,6 +166,7 @@ public class PasswordCanvasWorkshopScript : CanvasScript
         }
     }
 
+    // Return true if complies with rule
     public bool CheckRuleCompliance(Rule rule, string password)
     {
         switch (rule.description.Split(":")[0].Trim())
@@ -185,7 +187,8 @@ public class PasswordCanvasWorkshopScript : CanvasScript
                 return password.Any(c => !char.IsLetterOrDigit(c));
 
             case "Common Password":
-                return !IsCommonPassword(password);
+                //return !IsCommonPassword(password);
+                return true;
 
             case "Password Score":
                 return IsComplexEnough(password, 4);

@@ -39,6 +39,7 @@ public class NPCScript : ChallengeObject
                     Debug.Log("Player incorrectly identfies scam");
                     logic.decrementLife();
                 }
+                logic.StoreChallengeStatistics(gameObject.name, trustValue, 0);
                 break;
             }
         }
