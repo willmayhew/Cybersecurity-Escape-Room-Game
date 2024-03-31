@@ -4,7 +4,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/Stuff/Desktop/Uni Work/Year 3/COMP3200/Development/CyberSec Escape Room/WebBuildDev;D:/Stuff/Desktop/Uni Work/Year 3/COMP3200/Development/CyberSec Escape Room/WebBuild;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"D:/Stuff/Desktop/Uni Work/Year 3/COMP3200/Development/FinalWebGLBuild;D:/Stuff/Desktop/Uni Work/Year 3/COMP3200/Development/CyberSec Escape Room/WebBuildDev;D:/Stuff/Desktop/Uni Work/Year 3/COMP3200/Development/CyberSec Escape Room/WebBuild;;;;;;;\"}"
             }
         ]
     }
