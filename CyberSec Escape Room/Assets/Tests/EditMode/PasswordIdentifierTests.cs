@@ -29,7 +29,7 @@ public class PasswordIdentifierTests
     }
 
     [Test]
-    public void CheckAnswer_CorrectAnswerSelected()
+    public void Correct()
     {
         passwordIdentifier.selectedButton = 0;
 
@@ -47,7 +47,7 @@ public class PasswordIdentifierTests
     }
 
     [Test]
-    public void CheckAnswer_IncorrectAnswerSelected_LifeDecremented()
+    public void Incorrect_LifeDecremented()
     {
         passwordIdentifier.stagePasswords = stages;
         passwordIdentifier.selectedButton = 1;
@@ -65,7 +65,7 @@ public class PasswordIdentifierTests
     }
 
     [Test]
-    public void CheckAnswer_NoButtonSelected()
+    public void NoButtonSelected()
     {
         passwordIdentifier.stagePasswords = stages;
         passwordIdentifier.selectedButton = -1;

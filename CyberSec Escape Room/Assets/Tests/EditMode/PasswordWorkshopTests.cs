@@ -14,7 +14,7 @@ public class PasswordWorkshopTests
     }
 
     [Test]
-    public void CheckRuleCompliance_LengthRuleCompliance()
+    public void Compliance_Length()
     {
         bool isCompliant;
         string passwordTrue;
@@ -36,7 +36,7 @@ public class PasswordWorkshopTests
     }
 
     [Test]
-    public void CheckRuleCompliance_UppercaseRuleCompliance()
+    public void Compliance_Uppercase()
     {
         bool isCompliant;
         string passwordTrue;
@@ -57,7 +57,7 @@ public class PasswordWorkshopTests
     }
 
     [Test]
-    public void CheckRuleCompliance_LowercaseRuleCompliance()
+    public void Compliance_Lowercase()
     {
         bool isCompliant;
         string passwordTrue;
@@ -78,7 +78,7 @@ public class PasswordWorkshopTests
     }
 
     [Test]
-    public void CheckRuleCompliance_NumberRuleCompliance()
+    public void Compliance_Number()
     {
         bool isCompliant;
         string passwordTrue;
@@ -99,7 +99,7 @@ public class PasswordWorkshopTests
     }
 
     [Test]
-    public void CheckRuleCompliance_SpecialCharacterRuleCompliance()
+    public void Compliance_SpecialCharacter()
     {
         bool isCompliant;
         string passwordTrue;

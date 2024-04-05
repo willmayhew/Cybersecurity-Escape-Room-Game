@@ -8,6 +8,7 @@ public class PhishingChallengeTests
 {
 
     private PhishingCanvasScript phishingCanvasScript;
+    private MockLogicManager mockLogicManager;
 
     [SetUp]
     public void Setup()
@@ -23,10 +24,16 @@ public class PhishingChallengeTests
         phishingCanvasScript.letterTextUI = new GameObject().AddComponent<TMPro.TextMeshProUGUI>(); // Initialize letterTextUI
         phishingCanvasScript.acceptButton = new GameObject();
         phishingCanvasScript.rejectButton = new GameObject();
+
+        GameObject logicManagerObject = new GameObject();
+        mockLogicManager = logicManagerObject.AddComponent<MockLogicManager>();
+
+        phishingCanvasScript.logic = mockLogicManager;
+
     }
 
     [Test]
-    public void AcceptButton_Clicked_WhenLegitimateLetter()
+    public void Accept_LegitimateLetter()
     {
         // Simulate clicking the accept button
         phishingCanvasScript.LegitimateButton();
@@ -37,7 +44,7 @@ public class PhishingChallengeTests
     }
 
     [Test]
-    public void AcceptButton_Clicked_WhenIllegitimateLetter()
+    public void Accept_IllegitimateLetter()
     {
         // Set the current letter index to 1 (illegitimate letter)
         phishingCanvasScript.currentLetterIndex = 1;
@@ -52,7 +59,7 @@ public class PhishingChallengeTests
     }
 
     [Test]
-    public void RejectButton_Clicked_WhenLegitimateLetter()
+    public void Reject_LegitimateLetter()
     {
         // Simulate clicking the reject button
         phishingCanvasScript.IllegitimateButton();
@@ -64,7 +71,7 @@ public class PhishingChallengeTests
     }
 
     [Test]
-    public void RejectButton_Clicked_WhenIllegitimateLetter()
+    public void Reject_IllegitimateLetter()
     {
         // Set the current letter index to 1 (illegitimate letter)
         phishingCanvasScript.currentLetterIndex = 1;
@@ -75,6 +82,16 @@ public class PhishingChallengeTests
         // Ensure that the NextLetter method is called
         Assert.AreEqual(2, phishingCanvasScript.currentLetterIndex);
         Assert.IsFalse(phishingCanvasScript.incorrect);
+    }
+
+    private class MockLogicManager : LogicManager
+    {
+        public bool LifeDecremented { get; private set; }
+
+        public override void decrementLife()
+        {
+            LifeDecremented = true;
+        }
     }
 
 }

@@ -19,7 +19,7 @@ public class LogicTests
     }
 
     [Test]
-    public void DecrementLife_PlayerNotImmune_LifeDecremented()
+    public void NotImmune_LifeDecremented()
     {
         logicManager.ToggleImmunity(false);
 
@@ -38,7 +38,7 @@ public class LogicTests
     }
 
     [Test]
-    public void DecrementLife_PlayerImmune_LifeNotDecremented()
+    public void Immune_LifeNotDecremented()
     {
         logicManager.ToggleImmunity(true);
 
@@ -48,7 +48,7 @@ public class LogicTests
     }
 
     [Test]
-    public void IncrementLife_NotMaxLives()
+    public void IncrementLife_NotMax()
     {
         try
         {
@@ -60,7 +60,7 @@ public class LogicTests
     }
 
     [Test]
-    public void IncrementLife_MaxLivesReached()
+    public void IncrementLife_MaxLives()
     {
         logicManager.lives = 10;
 

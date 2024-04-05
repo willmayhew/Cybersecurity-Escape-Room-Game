@@ -25,7 +25,7 @@ public class RomFriScamTests
     }
 
     [Test]
-    public void EndOfDialogue_CorrectIdentificationOfScam_ChallengeCompleted()
+    public void Correct()
     {
         // Arrange
         mockDialogueManager.SetVariableState("pass", true);
@@ -38,7 +38,7 @@ public class RomFriScamTests
     }
 
     [Test]
-    public void EndOfDialogue_IncorrectIdentificationOfScam_LifeDecremented()
+    public void Incorrect_LifeDecremented()
     {
         // Arrange
         mockDialogueManager.SetVariableState("pass", false);

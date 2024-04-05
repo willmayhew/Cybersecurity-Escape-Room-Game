@@ -24,7 +24,7 @@ public class AttackItemTests
     }
 
     [Test]
-    public void ChallengeCompleted_BossDamage()
+    public void BossDamage()
     {
         attackItem.SetCanvasObject(new GameObject());
 
@@ -43,7 +43,7 @@ public class AttackItemTests
     }
 
     [Test]
-    public void ChallengeFailure_LifeDecremented()
+    public void LifeDecremented()
     {
         attackItem.SetCanvasObject(new GameObject());
 

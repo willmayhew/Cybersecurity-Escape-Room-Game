@@ -19,7 +19,7 @@ public class InventoryTests
     }
 
     [Test]
-    public void AddToInventorySuccessfully()
+    public void AddToInventory()
     {
         inventoryManager.AddToInventory(itemPrefab);
 
@@ -38,7 +38,7 @@ public class InventoryTests
     //}
 
     [Test]
-    public void UseItem_ItemDoesNotExist()
+    public void UseItem_DoesNotExist()
     {
         GameObject item2 = new GameObject();
         item2.AddComponent<RectTransform>();

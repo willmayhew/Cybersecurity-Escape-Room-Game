@@ -31,7 +31,7 @@ public class ScarewareTests
     }
 
     [Test]
-    public void CheckAnswer_CorrectAnswer_LifeNotDecremented()
+    public void Correct_LifeNotDecremented()
     {
         try
         {
@@ -44,7 +44,7 @@ public class ScarewareTests
     }
 
     [Test]
-    public void CheckAnswer_IncorrectAnswer()
+    public void Incorrect_LifeDecremented()
     {
         try
         {
@@ -56,7 +56,7 @@ public class ScarewareTests
     }
 
     [Test]
-    public void CheckAnswer_CorrectAnswer_LifeIncremented()
+    public void Correct_LifeIncremented()
     {
         try
         {
@@ -68,7 +68,7 @@ public class ScarewareTests
     }
 
     [Test]
-    public void CheckAnswer_IncorrectAnswer_LifeNotIncremented()
+    public void Incorrect_LifeNotIncremented()
     {
         try
         {

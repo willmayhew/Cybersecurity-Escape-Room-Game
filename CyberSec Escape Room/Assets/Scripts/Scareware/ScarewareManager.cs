@@ -86,8 +86,6 @@ public class ScarewareManager : MonoBehaviour
         //isScarewareActive = false;
         //Destroy(scarewarePopupInstance);
 
-        logic.StoreChallengeStatistics("Scareware", success, logic.GetScarewareIndex() % scarewarePopup.Length);
-
         if (success)
         {
             logic.AddLife();
@@ -95,6 +93,8 @@ public class ScarewareManager : MonoBehaviour
         {
             logic.decrementLife();
         }
+
+        logic.StoreChallengeStatistics("Scareware", success, logic.GetScarewareIndex() % scarewarePopup.Length);
 
         player.ToggleMovement(true);
         isScarewareActive = false;

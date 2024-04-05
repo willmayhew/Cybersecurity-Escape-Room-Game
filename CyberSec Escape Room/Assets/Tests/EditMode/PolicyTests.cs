@@ -22,7 +22,7 @@ public class PolicyTest
     }
 
     [Test]
-    public void CheckAnswer_CorrectAnswer()
+    public void CorrectAnswer()
     {
         securityPolicyScript.selectedButton = 0; // Select the correct answer
 
@@ -40,7 +40,7 @@ public class PolicyTest
     }
 
     [Test]
-    public void CheckAnswer_IncorrectAnswer()
+    public void IncorrectAnswer()
     {
         securityPolicyScript.selectedButton = 1; // Select the incorrect answer
 
