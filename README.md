@@ -2,4 +2,6 @@
 
 Dissertation completed as part of my bachelors at the University of Southampton
 
-Game is playable at https://willmayhew.itch.io/cyber-fraud-educational-game
+[Play the game online here](https://willmayhew.itch.io/cyber-fraud-educational-game)
+
+[Check out the final report](https://github.com/willmayhew/Cybersecurity-Escape-Room-Game/blob/main/Final_Report.pdf)
